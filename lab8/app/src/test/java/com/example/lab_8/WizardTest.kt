@@ -56,6 +56,7 @@ class WizardTest {
         evilWizard.train()
         if (evilWizard.mana >= 5){
             assertEquals(evilWizard.spellPower + 1, evilWizard.spellPower)
+            assertEquals(evilWizard.mana, evilWizard.mana - 5)
         }
 
 
