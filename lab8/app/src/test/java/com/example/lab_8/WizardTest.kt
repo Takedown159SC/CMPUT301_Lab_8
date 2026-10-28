@@ -53,22 +53,31 @@ class WizardTest {
 
     @Test
     fun train_increasePowerIfEnoughMana(){
+        evilWizard.mana = 5
+        var b4trainSP = evilWizard.spellPower
+        var b4trainmana = evilWizard.mana
         evilWizard.train()
-        if (evilWizard.mana >= 5){
-            assertEquals(evilWizard.spellPower + 1, evilWizard.spellPower)
-            assertEquals(evilWizard.mana, evilWizard.mana - 5)
-        }
+        assertEquals(b4trainSP + 1, evilWizard.spellPower)
+        assertEquals(b4trainmana - 5, evilWizard.mana)
+
+        //making sure it works for a number bigger than 5
+        evilWizard.mana = 900
+        b4trainSP = evilWizard.spellPower
+        b4trainmana = evilWizard.mana
+        evilWizard.train()
+        assertEquals(b4trainSP + 1, evilWizard.spellPower)
+        assertEquals(b4trainmana - 5, evilWizard.mana)
 
 
 
     }
     @Test
     fun train_powerStaysSameIfNotEnoughMana(){
+        evilWizard.mana = 4
         evilWizard.train()
-        if (evilWizard.mana < 5){
-            assertEquals(evilWizard.spellPower,evilWizard.spellPower)
-            assertEquals(evilWizard.mana, evilWizard.mana)
-        }
+        assertEquals(evilWizard.spellPower,evilWizard.spellPower)
+        assertEquals(evilWizard.mana, evilWizard.mana)
+
 
     }
 }
