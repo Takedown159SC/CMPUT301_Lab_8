@@ -2,6 +2,10 @@ package com.example.lab_8
 
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert
+import org.junit.Assert.assertTrue
+
+
 import org.junit.Before
 import org.junit.Test
 
@@ -45,5 +49,24 @@ class WizardTest {
         evilWizard.restoreMana(40) // 30 + 40 = 70, so mana should be set to 70
 
         assertEquals(70, evilWizard.mana)
+    }
+
+    @Test
+    fun train_increasePowerIfEnoughMana(){
+        evilWizard.train()
+        if (evilWizard.mana >= 5){
+            assertEquals(evilWizard.spellPower + 1, evilWizard.spellPower)
+        }
+
+
+
+    }
+    @Test
+    fun train_powerStaysSameIfNotEnoughMana(){
+        evilWizard.train()
+        if (evilWizard.mana < 5){
+            assertEquals(evilWizard.spellPower,evilWizard.spellPower)
+        }
+
     }
 }
